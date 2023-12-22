@@ -1,0 +1,26 @@
+<h1>Welcome, {{name}}</h1>
+<input type="text" [value]="name">
+<input type="text" [(ngModel)]="name">
+
+
+<div [class.active]="isActive" [style.font-size] = "isActive ? '26px': '16px'">
+    {{count}} 
+    <button (click)="increment($event)">+</button>
+</div>
+
+<input type="checkbox" [(ngModel)]="isActive"> isActive?
+
+@if(isActive){
+    <p>Lorem, ipsum dolor.</p>
+}
+
+
+<ul>
+    @for(fruit of fruits; track $index){
+        <li> {{fruit}}</li>
+    }
+</ul>
+
+<ul>
+    <li *ngFor="let fruit of fruits">{{fruit}}</li>
+</ul>
