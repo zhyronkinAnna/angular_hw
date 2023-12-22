@@ -1,7 +1,21 @@
 <h1>Users</h1>
 
 <div *ngFor="let user of users">
-    {{user.name}}<br>
-    {{user.email}}
+    <app-user-info [userName]="user.name" [userEmail]="user.email"></app-user-info>
 </div>
 <hr>
+
+
+<form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+    <div>
+        <label for="name">Name:</label>
+        <input [(ngModel)]="newName" type="text" name="name" required minlength="3" #name="ngModel">
+        <div [hidden]="name.valid || name.untouched">Name is required</div>
+    </div>
+    <div>
+        <label for="email">Email:</label>
+        <input [(ngModel)]="newEmail" type="email" name="email" required #email="ngModel">
+        <div [hidden]="email.valid || email.untouched">Name is required</div>
+    </div>
+    <button [disabled]="myForm.invalid">Add user</button>
+</form>
