@@ -6,7 +6,7 @@
 <hr>
 
 
-<form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+<!-- <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
     <div>
         <label for="name">Name:</label>
         <input [(ngModel)]="newName" type="text" name="name" required minlength="3" #name="ngModel">
@@ -18,4 +18,17 @@
         <div [hidden]="email.valid || email.untouched">Name is required</div>
     </div>
     <button [disabled]="myForm.invalid">Add user</button>
+</form> -->
+
+
+<form [formGroup]="myForm">
+    <div>
+        <input type="text" name="name" formControlName="userName">
+        <div class="err" *ngIf="myForm.controls['userName'].invalid && myForm.controls['userName'].touched">Invalid Name</div>
+    </div>
+    <div>
+        <input type="text" name="email" formControlName="userEmail">
+        <div class="err" *ngIf="myForm.controls['userEmail'].invalid && myForm.controls['userEmail'].touched">Invalid Email</div>
+    </div>
+    <button>add user</button>
 </form>
